@@ -1,9 +1,24 @@
 ---
 layout: post
 title: Build Week Project 1 - The Relationship Between CO2 Emissions and Wildfires in California
-subtitle: Excerpt from Soulshaping by Jeff Brown
+subtitle: 
 cover-img:
 thumbnail-img: /assets/img/wildfire_image.jpg
 share-img: 
 tags: 
 ---
+
+  In this post I will be talking about the relationship between CO2 emissions worldwide and the increasing size of wildfires in California. I chose this topic because I am generally interested about the results I would find. The fires have been running rampant in California and so much so in the past two years it makes you wonder why this is happening.  When I first heard about the fires I was looking up articles and I couldn't find much about how global warming relates to the wildfires. I'm not an environmental scientist so I don't know exactly how the CO2 in the air would cause wildfires. But, I can find if there is a correlation between CO2 emissions and wildfires using data science.
+  
+  
+  For my project I started by searching for databases containing statistics of wildfires in the past years. I found data on Cal Fire that looked good and moved on to CO2 statistics. I used a site that a fellow student shared to me called The World Bank and it had an excel spreadsheet of every country's CO2 emissions for the past forty years. I began to clean the data sets and get them to be useable for my analysis of my newfound data.
+  
+![graph](/assets/img/image1.png)
+  
+  I started my alaysis by creating a graph of my data. I started with a simple one that showed the amound of CO2 released worldwide per year beside a graph of the amount of acres burned by wildfires in california per year. Below is that graph. The conclusion I came to when seeing it was a positive correlation. But, also what I found interesting is it seems like as CO2 emissions go up the bad wildfire years get worse but the good wildfire years stay similar and even seem to be longer. I don't know why this would be the case. Perhaps after a bad wildfire year there isn't much left to burn, but I found that particularly interesting about this graph.
+  In my next graph I made a scatter plot of worldwide CO2 emissions vs acres burned by wildfires. Then plotted a best fit line in the graph. The best fit line showed a positive trend and the correlation coefficient between worldwide CO2 emissions and acres burned by wildfires was .56 meaning a moderate correlation. This graph solidates the positive trend I saw in the previous graph. Overall confirming the relationship between CO2 emissions and size of wildfires in California.
+  
+  ![graph](/assets/img/image2.png)
+  
+  Climate change is a big deal and we need to drastically change the way we live to help stop the effects it will have on us, but especially future generations. 
+  
