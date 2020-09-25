@@ -2,7 +2,7 @@
 layout: post
 title: Build Week Project 1 - The Relationship Between CO2 Emissions and Wildfires in California
 subtitle: 
-cover-img:
+cover-img: /assets/img/OIP (1).jpg
 thumbnail-img: /assets/img/wildfire_image.jpg
 share-img: 
 tags: 
