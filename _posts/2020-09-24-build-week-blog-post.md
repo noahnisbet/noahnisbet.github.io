@@ -8,7 +8,9 @@ share-img:
 tags: 
 ---
 
-In this post, I will be talking about the relationship between CO2 emissions worldwide and the increasing size of wildfires in California. I chose this topic because I am interested in the results I would find. The fires have been rapidly growing in California and so much so in the past two years, it makes you wonder why this is happening.  When I first heard about the fires I was looking up articles, and I couldn't find much about how global warming relates to the wildfires. I'm not an environmental scientist so I don't know exactly how the CO2 in the air would cause wildfires. But, I can find if there is a correlation between CO2 emissions and wildfires using data science.
+Reseach Question: Are the sizes of wildfires and CO2 emissions correlated?
+
+In this post, I will be talking about the relationship between CO2 emissions worldwide and the increasing size of wildfires in California. I chose this topic because I am interested in the results I would find. The fires have been rapidly growing in California and so much so in the past two years, it makes you wonder why this is happening.  When I first heard about the fires I was looking up articles, and I couldn't find much about how global warming relates to the wildfires. I'm not an environmental scientist so I don't know exactly how the CO2 in the air would cause wildfires. But, I can find out if there is a correlation between CO2 emissions and wildfires using data science.
 
 For my project, I started by searching for databases containing statistics of wildfires in the past years. I found data on Cal Fire that looked good and moved on to CO2 statistics. I used a site that a fellow student shared to me called The World Bank and it had an excel spreadsheet of every country's CO2 emissions for the past forty years. I began to clean the data sets and get them to be useable for my analysis of my newfound data.
   
