@@ -1,78 +1,47 @@
 ---
 layout: post
-title: Sample blog post
-subtitle: Each post also has a subtitle
-gh-repo: daattali/beautiful-jekyll
-gh-badge: [star, fork, follow]
-tags: [test]
-comments: true
+title: Predicting Hurricane Strengths with Predictive Modeling
+subtitle: By Noah Nisbet
+cover-img: /assets/img/hurricanepic.jpg
+thumbnail-img: /assets/img/hurricanepic.jpg
+share-img: /assets/img/hurricanepic.jpg
+tags: [Predicitve modeling]
 ---
 
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
+In this Build Week I will be trying to predict strengths of hurricanes using the features in my dataset.
 
-**Here is some bold text**
+You can download my dataset from Google Cloud here: https://console.cloud.google.com/marketplace/product/noaa-public/hurricanes?filter=solution-type:dataset&id=fa502e93-02a3-4606-8918-5d44a5e8f8f0
 
-## Here is a secondary heading
+As you can see my dataset is huge at 693704 rows. This made a lot of the methods slow and difficult to process so I started by trying to make the dataset smaller.
 
-Here's a useless table:
+![graph](/assets/img/shapeofdataset.PNG)
 
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
+My dataset contains data from hurricanes all the way back to 1842. For these hurricanes it takes the data from them at six hour intervals thoughout the hurricanes lifespan. This makes the dataset very big. When first approaching this dataset I wanted to try to predict the hurricanes path, however it was a bit out of reach so instead I used the dataset to predict the strengths of the hurricanes.
 
+I started by cleaning my dataset a bit. I used multi-index structure for my dataset and removing rows that didn't have values for all my features. I felt like I could do this because of the vast amount of data I had. This also helped with training my models later on because it would sometimes crash if it wasn't an efficient model for my set. The multi-index structure also seemed appropriate because of the data for each storm happening multiple times for every 6 hour interval. I also removed a lot of columns that seemed unnessesary. Many columns were the same stats just coming from different agencies. I also removed all leaky columns. These were all wind observations and had to be removed because stregths of hurricanes are calculated through wind stregths. If I had left them my model would basically be given the answer to the question what category should this hurricane be rather than using all the variables to make a guess.
 
-How about a yummy crepe?
+Below are the features for my model my target matrix is usa_sshs and it is a rating for storm. It isn't from 1-5 it is actually -5 to 5. -5 being not much of a storm to 5 being a cat 5 hurricane. I chose this as my target because it seemed like a trustworthy rating as it comes from the U.S. and it didn't have as many NaN values as other rating columns.
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
+![graph](/assets/img/build week.PNG)
 
-It can also be centered!
+I next did a train val test split with 60% of the data being in the test set and 20% being in the val and test sets. 
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .mx-auto.d-block :}
+![graph](/assets/img/splittingtrainvaltest.PNG)
 
-Here's a code chunk:
+After that I found my baseline accuracy which was .34%. This is the accuracy my model needs to beat to be even a decent model.
 
-~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-~~~
+![graph](/assets/img/Baselineaccuracy.PNG)
 
-And here is the same code with syntax highlighting:
+Next I trained three models. I did a XGBClassifier, a Random Forest, and a Ridge Classifier. Out of these three the Random Forest performed the best. I also used RandomSearchCV a hyperperameter tuning method to make the random forest even more accurate for predicting the strengths of the storms. Below is the code for my pipeline.
 
-```javascript
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-```
+![graph](/assets/img/Randomforestmodel.PNG)
 
-And here is the same code yet again but with line numbers:
+Here are the scores for the model.
 
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-{% endhighlight %}
+![graph](/assets/img/scores.PNG)
 
-## Boxes
-You can add notification, warning and error boxes like this:
+As you can see my model was accurate at predicting the strength of the storms 85% of the time. This is a great score beating my baseline by a lot. 
 
-### Notification
+Overall my model was successful. However I don't think it would be very useful in the real world. Below is my feature importances and as you can see it heavily relies on the pressure feature. I was on the fence on weather or not I should've gotten rid of it because it could be seen as a leaky column. However whether it is or not the category of the hurricane could be found much easier using wind speeds. 
 
-{: .box-note}
-**Note:** This is a notification box.
-
-### Warning
-
-{: .box-warning}
-**Warning:** This is a warning box.
-
-### Error
-
-{: .box-error}
-**Error:** This is an error box.
+![graph](/assets/img/featureimportances.PNG)
